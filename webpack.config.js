@@ -50,7 +50,7 @@ const config = {
 	plugins: [
 		new HtmlWebpackPlugin({
     		alwaysWriteToDisk: true,
-    		title: 'Template Title',
+    		title: 'React Boilerplate Title',
 			template: SRC_DIR + '/index.html'
 		}),
 		new HtmlWebpackHarddiskPlugin()
