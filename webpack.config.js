@@ -8,28 +8,34 @@ const SRC_DIR = path.resolve(__dirname, 'src');
 const APP_DIR = path.resolve(__dirname, 'src/app');
 
 const config = {
-	entry: APP_DIR + '/index.js',
+	entry: APP_DIR + '/index.jsx',
 	output: {
 		path: BUILD_DIR,
 		filename: 'bundle.js'
+	},
+	resolve: {
+		extensions: ['.js', '.jsx']
 	},
 	module:{
 		rules: [
 
 		{
-			test: /\.js$/,
+			test: /\.jsx?$/,
 			exclude: /node_modules/,
 			use: {
-				loader: "babel-loader",
-				options: {
-					presets: ['env', 'react']
-				}
+				loader: "babel-loader"
 			}
 		},
 
 		{
-			test: /\.s?css$/,
-			use: [ 'style-loader', 'css-loader', "sass-loader"]
+			test: /\.scss$/,
+			use: [{
+                loader: "style-loader" // creates style nodes from JS strings
+            }, {
+                loader: "css-loader" // translates CSS into CommonJS
+            }, {
+                loader: "sass-loader" // compiles Sass to CSS
+            }]
 		},
 
 		{
